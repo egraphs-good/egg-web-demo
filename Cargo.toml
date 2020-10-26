@@ -21,5 +21,8 @@ log = "0.4"
 env_logger = "0.7"
 ordered-float = "1"
 
-# egg = { version = "0.6", features = ["stdweb"] }
-egg = { path = "../egg", features = ["wasm-bindgen"] }
+[dependencies.egg]
+# version = "0.6"
+git = "https://github.com/egraphs-good/egg"
+rev = "17bf3b3195954cfcdc554ef744ab70b976a91989"
+features = ["wasm-bindgen"]
