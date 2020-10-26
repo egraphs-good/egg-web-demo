@@ -1,0 +1,25 @@
+[package]
+name = "egg-web-demo"
+version = "0.1.0"
+authors = ["Max Willsey <me@mwillsey.com>"]
+edition = "2018"
+description = "An demo of egraphs"
+repository = "https://github.com/egraphs-good/egg-web-demo"
+readme = "README.md"
+license = "MIT"
+keywords = ["egg"]
+categories = ["egg"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+yew = "0.17"
+wasm-bindgen = "0.2.67"
+
+log = "0.4"
+env_logger = "0.7"
+ordered-float = "1"
+
+# egg = { version = "0.6", features = ["stdweb"] }
+egg = { path = "../egg", features = ["wasm-bindgen"] }

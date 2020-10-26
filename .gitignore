@@ -1,0 +1,13 @@
+target
+**/*.rs.bk
+Cargo.lock
+
+dots/
+egg/data/
+
+# nix stuff
+.envrc
+default.nix
+
+# other stuff
+TODO.md
