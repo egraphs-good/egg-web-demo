@@ -1,0 +1,21 @@
+{
+  "name": "egg-web-demo",
+  "collaborators": [
+    "Max Willsey <me@mwillsey.com>"
+  ],
+  "description": "An demo of egraphs",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/egraphs-good/egg-web-demo"
+  },
+  "files": [
+    "wasm_bg.wasm",
+    "wasm.js",
+    "wasm.d.ts"
+  ],
+  "module": "wasm.js",
+  "types": "wasm.d.ts",
+  "sideEffects": false
+}
