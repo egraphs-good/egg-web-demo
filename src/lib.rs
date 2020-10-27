@@ -200,6 +200,7 @@ impl Component for Model {
                     <tr>
                         <th> {"expr"} </th>
                         <th> {"eclass"} </th>
+                        <th> {"best"} </th>
                     </tr>
                     { for self.added.iter().map(|a| a.view(&mut extract)) }
                 </table>
