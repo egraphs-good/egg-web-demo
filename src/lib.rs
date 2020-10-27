@@ -2,8 +2,8 @@
 
 use std::convert::TryInto;
 
-use wasm_bindgen::prelude::*;
 use egg::{EClass, Id, Pattern, RecExpr, SearchMatches, Searcher};
+use wasm_bindgen::prelude::*;
 use yew::{prelude::*, services::ConsoleService};
 
 mod math;
@@ -73,9 +73,15 @@ struct Added {
     expr: RecExpr<Math>,
 }
 
-impl Renderable for Added {
-    fn render(&self) -> Html {
-        html! { <tr> <td> {self.expr.pretty(100)} </td> <td> {self.id} </td> </tr> }
+impl Added {
+    fn view(&self, extract: &mut Extractor) -> Html {
+        html! {
+            <tr>
+                <td> {self.expr.pretty(100)} </td>
+                <td> {self.id} </td>
+                <td> {extract.find_best(self.id).1.pretty(100)} </td>
+            </tr>
+        }
     }
 }
 
@@ -168,6 +174,7 @@ impl Component for Model {
 
     fn view(&self) -> Html {
         let mut extract = Extractor::new(&self.egraph, MathCostFn);
+
         let query_message = match &self.query {
             Ok(q) => {
                 let found: Vec<Id> = q.matches.iter().map(|m| m.eclass).collect();
@@ -178,7 +185,10 @@ impl Component for Model {
 
         let oninput = self.link.callback(|e: InputData| Msg::UpdateQuery(e.value));
         let onclick = self.link.callback(|_| Msg::RunRewrites);
-        let onsubmit = self.link.callback(|e: FocusEvent| {e.prevent_default(); Msg::AddQuery});
+        let onsubmit = self.link.callback(|e: FocusEvent| {
+            e.prevent_default();
+            Msg::AddQuery
+        });
         html! {
         <div>
             <section id="add",>
@@ -191,7 +201,7 @@ impl Component for Model {
                         <th> {"expr"} </th>
                         <th> {"eclass"} </th>
                     </tr>
-                    { for self.added.iter().map(Renderable::render) }
+                    { for self.added.iter().map(|a| a.view(&mut extract)) }
                 </table>
             </section>
             <section id="examples",>
