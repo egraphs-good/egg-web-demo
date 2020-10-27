@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>egg</title>
+        <style>
+section {
+    float: left;
+    padding: 20px;
+}
+
+.eclass p {
+    margin: 0 10px;
+}
+
+.rewrite-group {
+    display: flex;
+    align-items: flex-start;
+}
+
+.rewrite {
+    display: flex;
+    align-items: flex-start;
+}
+        </style>
+        <script type="module">
+            import init from "./pkg/wasm.js"
+            init()
+        </script>
+    </head>
+    <body>
+        <a href="https://github.com/egraphs-good/egg">Github repo</a>
+        <div id="app"></div>
+    </body>
+</html>
